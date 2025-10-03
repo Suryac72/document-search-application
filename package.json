@@ -1,0 +1,26 @@
+{
+  "name": "document-search-application",
+  "version": "1.0.0",
+  "description": "Document Search Application Using SpringBoot + OpenSearch + React",
+  "main": "index.js",
+ "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && mvnw spring-boot:run",
+    "start:frontend": "cd frontend && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suryac72/document-search-application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Suryac72/document-search-application/issues"
+  },
+  "homepage": "https://github.com/Suryac72/document-search-application#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
