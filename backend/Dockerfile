@@ -1,10 +1,10 @@
 FROM eclipse-temurin:21-jdk AS build
-WORKDIR /app
+WORKDIR /document-search-application-backend
 COPY . .
 RUN ./mvnw package -DskipTests
 
 FROM eclipse-temurin:21-jre
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+WORKDIR /document-search-application-backend
+COPY --from=build /document-search-application-backend/target/*.jar document-search-application-backend.jar
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "document-search-application-backend.jar"]
