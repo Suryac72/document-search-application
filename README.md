@@ -21,9 +21,12 @@ Before running the Application, make sure you have:
 ## Steps to setup local environment of application
 
 - Clone the application using repository link [Document Search Application](https://github.com/Suryac72/document-search-application.git)
+- Create one `.env` File inside above Repository root folder (not in frontend or backend folder) and add content which is shared with you via email
+- Run `Docker Desktop` in your machine
+- Open `git bash` terminal on `vscode` inside above repository
 - Use below command to run application using docker
-
     ```bash
-    docker-compose up --build #for building container and run application frontend and backend
+    ./opensearch.sh #for local command execution like installing packages and creating docker containers
     docker-compose down #for stoping server
     ```
+- Access `http://localhost:5173` to access UI
