@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "opensearch.host",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.host'"
+  },
+  {
+    "name": "opensearch.port",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.port'"
+  },
+  {
+    "name": "opensearch.scheme",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.scheme'"
+  },
+  {
+    "name": "opensearch.username",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.username'"
+  },
+  {
+    "name": "opensearch.password",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.password'"
+  },
+  {
+    "name": "opensearch.index-name",
+    "type": "java.lang.String",
+    "description": "A description for 'opensearch.index-name'"
+  }
+]}

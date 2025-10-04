@@ -1,14 +1,60 @@
+version: '3.8'
+
 services:
+  opensearch:
+    image: opensearchproject/opensearch:2.11.0
+    container_name: opensearch
+    environment:
+    - discovery.type=single-node
+    - plugins.security.disabled=true
+    - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+    - OPENSEARCH_INDEX=documents 
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    networks:
+      - opensearch-net
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -u admin:Admin@123 -X GET http://localhost:9200 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
   backend:
-    build: ./backend 
+    build: ./backend
     container_name: backend
     ports:
       - "8080:8080"
+    environment:
+      - OPENSEARCH_HOST=opensearch
+      - OPENSEARCH_PORT=9200
+      - OPENSEARCH_SCHEME=http
+      - OPENSEARCH_USERNAME=admin
+      - OPENSEARCH_PASSWORD=Admin@123
+    depends_on:
+      opensearch:
+        condition: service_healthy
+    networks:
+      - opensearch-net
 
   frontend:
-    build: ./frontend    
+    build: ./frontend
     container_name: frontend
     ports:
       - "5173:5173"
     depends_on:
       - backend
+    networks:
+      - opensearch-net
+    environment:
+    - VITE_API_BASE_URL=http://localhost:8080
+
+volumes:
+  opensearch-data:
+
+networks:
+  opensearch-net:
+    driver: bridge
