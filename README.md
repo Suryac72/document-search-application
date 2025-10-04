@@ -5,7 +5,7 @@ Both services are dockerized using docker and can be started easily with the hel
 
 ---
 
-## 🛠️ Prerequisites
+## Prerequisites
 
 Before running the Application, make sure you have:
 
