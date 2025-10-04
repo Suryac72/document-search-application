@@ -32,8 +32,6 @@ services:
       - OPENSEARCH_HOST=opensearch
       - OPENSEARCH_PORT=9200
       - OPENSEARCH_SCHEME=http
-      - OPENSEARCH_USERNAME=admin
-      - OPENSEARCH_PASSWORD=Admin@123
     depends_on:
       opensearch:
         condition: service_healthy
